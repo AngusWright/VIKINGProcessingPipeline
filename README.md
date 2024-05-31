@@ -4,66 +4,60 @@ Pipeline to Process VISTA VIKING Data for KiDS Photometry
 
 ---------------------------------------------------
 
-## asctoldac_auto.sh
+## Scripts 
+
+### asctoldac_auto.sh
 Automatically convert ascii to ldac without need 
 for creating your own config file. 
 
 > Called by doPrepocessing.sh 
 
----------------------------------------------------
 
-## compileInputCat.sh
+### compileInputCat.sh
 Script to generate the input ASTROCAT.fits for the 
 doPreprocessing.sh and doPhotometry.sh scripts, 
 by selecting the appropriate KiDS catalogues. 
 
 > Called by the user 
 
----------------------------------------------------
 
-## create.weightmap.r
+### create.weightmap.r
 Script for creating an output weightmap to mask 
 pixels where there was missing data in the original 
 map.
 
 > Called by doProcessDetector.sh
 
----------------------------------------------------
 
-## doPreprocessing.README
+### doPreprocessing.README
 Readme file for the doPreprocessing.sh script 
 
----------------------------------------------------
 
-## doPreprocessing.sh
+### doPreprocessing.sh
 The main Preprocessing script. Details are given 
 in the .README above. 
 
----------------------------------------------------
 
-## doProcessDetector.sh
+### doProcessDetector.sh
 The script for processing a single VISTA detector  
 
 > Called by doProcessPawPrint.sh 
 
----------------------------------------------------
 
-## doProcessPawPrint.sh
+### doProcessPawPrint.sh
 The script for processing a single VISTA paw-print
 
 > Called by doPreprocessing.sh 
 
----------------------------------------------------
 
-## doReduceDetector.r
+### doReduceDetector.r
 The R script for doing the pixel-crunching of each 
 single detector.
 
 > Called by doProcessDetector.sh 
 
----------------------------------------------------
 
-## getAndGo.sh
+### getAndGo.sh
 Script to get paw-prints from the WFAU server and 
 select them for processing. The script takes a 
 WFAU wget script of _catalogues_ that you want to 
@@ -73,9 +67,8 @@ mimic the VIKING depth across your field.
 
 > Called by the user
 
----------------------------------------------------
 
-## getCatalogueDetails.sh
+### getCatalogueDetails.sh
 Get the relevant details for pawprint selection
 from each of the WFAU PawPrint Catalogues. The script
 uses the output logfile from selectPaws.sh to determine
@@ -85,9 +78,8 @@ prior to the catalogues being moved elsewhere...
 
 > Called by getAndGo.sh, hereAndGo.sh
 
----------------------------------------------------
 
-## getFrameDetails.R
+### getFrameDetails.R
 Script is a side-script for the doPreprocessing.sh 
 that allows a user to re-generate (most of) the 
 frameDetails.dat file after processing has been 
@@ -96,18 +88,16 @@ was lost after processing was completed.
 
 > Called by the user 
 
----------------------------------------------------
 
-## getNpaws.r
+### getNpaws.r
 Script to select the correct number of paw-prints 
 needed to create a VIKING-like dataset from a list 
 of WFAU paw-prints. 
 
 > Called by getAndGo.sh, hereAndGo.sh  
 
----------------------------------------------------
 
-## hereAndGo.sh
+### hereAndGo.sh
 Script to search through paw-prints and select them
 for preprocessing. The script takes a list of WFAU 
 _catalogue_ files that you want to use to select 
@@ -119,103 +109,90 @@ paw-print data to already exist locally.
 
 > Called by the user 
 
----------------------------------------------------
 
-## makeConfigs.sh
+### makeConfigs.sh
 Make the various Configure & Parameter files needed
 by doProcessDetector.sh
 
 > Called by doPreprocessing.sh
 
----------------------------------------------------
 
-## makeEyeballMog.sh
+### makeEyeballMog.sh
 Script for constructing a low resolution PNG of the 
 fits files within the supplied directories, for 
 eyeballing and QC. 
 
 > Called by the user
 
----------------------------------------------------
 
-## makePSF.r
+### makePSF.r
 Script generates a gaussian filter kernel for use 
 in SourceExtractor, using parameters defined in 
 the function call
 
 > Called by doReduceDetector
 
----------------------------------------------------
 
-## makeSummaryStats.r
+### makeSummaryStats.r
 Save the Summary Statistics to file and Remove all 
 temporary files generated during 
 doProcessDetector.sh 
 
 > Called by doProcessPawPrint.sh, doPreprocessing.sh 
 
----------------------------------------------------
 
-## missingDetectors.R
+### missingDetectors.R
 Script returns the entires of an input catalogue 
 that are missing from a provided folder 
 
 > Called by the user 
 
----------------------------------------------------
 
-## nMissing.R
+### nMissing.R
 Returns the number of Paw-prints in an input path 
 that have no matching reductions in the output path 
 
 > Called by doPreprocessing.sh 
 
----------------------------------------------------
 
-## PATHS.sh
+### PATHS.sh
 Definitions of paths to various binaries required 
 by the doPreprocessing.sh and doPhotometry.sh 
 scripts. 
 Sourced by doPreprocessing.sh, doPhotometry.sh 
 
----------------------------------------------------
 
-## PlotProgress.R
+### PlotProgress.R
 Script shows the progress of the processing pipeline
 
 > Called by the user 
 
----------------------------------------------------
 
-## progressbar.sh
+### progressbar.sh
 Shell function for printing the progress bar used 
 in the processing pipeline 
 
----------------------------------------------------
 
-## selectPawsLocal.sh
+### selectPawsLocal.sh
 Script to select the appropriate Paws for 
 preprocessing from a list of WFAU catalogues
 
 > Called by hereAndGo.sh 
 
----------------------------------------------------
 
-## selectPaws.sh
+### selectPaws.sh
 Script to select the appropriate Paws for 
 preprocessing from a list of WFAU catalogues
 
 > Called by getAndGo.sh 
 
----------------------------------------------------
 
-## var_plot.R
+### var_plot.R
 
 
 ---------------------------------------------------
 
 ```
-
 ===================================================
                  Calling Tree
 ===================================================
