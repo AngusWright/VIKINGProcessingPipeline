@@ -1,4 +1,4 @@
-# VIKINGProcessingPipeline
+# KiDS VIKING Processing Pipeline: KVpipe
 
 Pipeline to Process VISTA VIKING Data for KiDS Photometry
 
