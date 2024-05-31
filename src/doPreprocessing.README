@@ -1,0 +1,104 @@
+#
+# README file for the doPreprocessing.sh script
+# Written by A.H.Wright (1-11-16)
+#
+
+#
+# OVERVIEW
+#
+The doPreprocessing.sh script is a function for reducing VISTA
+stacked Paw-Print data into calibrated and documented individual
+detector data. The script calls a series of subsequent scripts and
+binary files that are used to produce the 5 main data products:
+
+  1) Native Detector Images
+  2) Native UnRotated Detector Images
+  3) Native UnRotated Sky-Subtracted Detector Images
+  4) Convolved Detector Images
+  5) DetectorDetails.dat catalogue of detector properties
+
+These data products are useful for various science cases, and so
+all products are output when the code is run. All output images
+are calibrated to a standard ZeroPoint of 30.
+
+The DetectorDetails.dat catalogue contains pertinent information
+for each detector that has been both measured and read from
+the FITS headers, including:
+
+  - CASU/WFAU defined Seeing
+  - CASU/WFAU defined Sky Estimate
+  - PSFex Measured Seeing
+  - Filter
+  - CASU/WFAU defined Zero Point
+  - Observation Details (Exposure Time, Air Mass, etc)
+
+#
+# SYSTEM REQUIREMENTS
+#
+To run the doPreprocessing.sh script, the program requires the
+following binary files to be directed to in the PATHS.sh file:
+
+  1) SourceExtractor (Astromatic)
+  2) PSFEx (Astromatic)
+  3) SWarp (Astromatic)
+  4) Rscript (R, v3.3.0+)
+  5) FGauss (HEAsoft)
+  6) ImCopy (HEAsoft)
+
+Once these binaries are downloaded and installed, the path to the
+binaries must be included in the PATHS.sh file. If the binaries are
+already in your $PATH, then the binary locations can be directed to
+simply using the `which <binary>` function in bash.
+
+#
+# R PACKAGES
+#
+In addition to these external binary files, the script also requires
+two R packages: "FITSio" and "astro". These can be installed in your
+personal R library simply by running the command:
+
+/path/to/R -e 'install.packages(c("FITSio","astro"),repos="https://cran.uni-muenster.de/")'
+
+#
+# CALLING SYNTAX
+#
+To run the script, you need to specify the path to the Scripts directory
+and the path to the folder containing the paw-print files that you want
+to process. If you have not moved the doPreprocessing.sh file from its
+original directory, then the call will look something like this:
+
+/path/to/scripts/doPreprocessing.sh /path/to/scripts/ /path/to/pawprints/
+
+And that's it!
+
+#
+# GETTING PAW-PRINTS 
+#
+In addition to the scripts to process VISTA paw-prints, there also exists 
+scripts here for compiling a selection of VISTA paw-prints that (attempt to) 
+match the VISTA VIKING survey depth using whatever VISTA data is available in 
+your field. These come in two types: hereAndGo.sh and getAndGo.sh 
+
+hereAndGo.sh: 
+  Uses a list of VISTA catalogues and images that are already on disk to construct 
+  a VIKING-like dataset. 
+
+getAndGo.sh: 
+  Uses a WFAU wget script (of catalogues) to select images that are required to construct 
+  a VIKING-like dataset in your field. 
+
+Combining these functions with the processing functions, we can take an arbitrarily WGET (or local) 
+list of WFAU VISTA catalogues, and do the following:  
+
+# Initialise the variables in the PATH.sh file
+> # EDIT THE PATHS.sh FILE IN YOUR FAVOURITE TEXT EDITOR, eg;
+> # vi /path/to/scripts/PATHS.sh 
+# Run the following command 
+> bash /path/to/scripts/getAndGo.sh && 
+  mkdir Detectors/ &&
+  cd Detectors/ && 
+  bash /path/to/scripts/doPreprocessing.sh /path/to/scripts/ ../Paws/ 
+
+#This will do all the things: select the relevant images, create a VIKING-like dataset, and preprocess the images. 
+#To measure photometry from these processed images (and to combine them into final catalogues) see the doPhotometry.README  
+
