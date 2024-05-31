@@ -2,6 +2,10 @@
 
 Pipeline to Process VISTA VIKING Data for KiDS Photometry
 
+Codes here taken from the private KiDS-VIKING_pipeline of Prof. H.Hildebrandt, 
+where they were developed. The are duplicated here in their state at commit 
+cf764ca, as used for KiDS-DR5, for public release.
+
 ---------------------------------------------------
 
 ## Scripts 
